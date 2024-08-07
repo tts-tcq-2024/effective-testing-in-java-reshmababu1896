@@ -13,6 +13,7 @@ public class Tshirts {
         assert(size(37) == "S");
         assert(size(38) == "M");
         assert(size(40) == "M");
+         assert(size(42) == "M");
         assert(size(43) == "L");
         System.out.println("All is well (maybe!)");
     }
