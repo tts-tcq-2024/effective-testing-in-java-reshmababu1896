@@ -2,9 +2,9 @@ public class Alerter {
     static int alertFailureCount = 0;
     static int networkAlertStub(float celcius) {
         System.out.println("ALERT: Temperature is " + celcius + " celcius");
-        // Return 200 for ok
-        // Return 500 for not-ok
-        // stub always succeeds and returns 200
+       if (celcius > 200) { // Simulating failure condition for temperatures > 200 Celsius
+            return 500;
+        }
         return 200;
     }
     static void alertInCelcius(float farenheit) {
