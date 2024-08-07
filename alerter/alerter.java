@@ -2,7 +2,7 @@ public class Alerter {
     static int alertFailureCount = 0;
     static int networkAlertStub(float celcius) {
         System.out.println("ALERT: Temperature is " + celcius + " celcius");
-       if (celcius > 200) { // Simulating failure condition for temperatures > 200 Celsius
+       if (celcius > 200) { 
             return 500;
         }
         return 200;
@@ -15,7 +15,7 @@ public class Alerter {
             // let us keep a count of failures to report
             // However, this code doesn't count failures!
             // Add a test below to catch this bug. Alter the stub above, if needed.
-            alertFailureCount += 0;
+            alertFailureCount += 1;
         }
     }
     public static void main(String[] args) {
