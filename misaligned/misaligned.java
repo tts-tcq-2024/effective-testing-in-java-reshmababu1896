@@ -1,18 +1,33 @@
 public class Misaligned {
-    static int printColorMap() {
-        String majorColors[] = {"White", "Red", "Black", "Yellow", "Violet"};
-        String minorColors[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-        int i = 0, j = 0;
-        for(i = 0; i < 5; i++) {
-            for(j = 0; j < 5; j++) {
-                System.out.printf("%d | %s | %s\n", i * 5 + j, majorColors[i], minorColors[i]);
+    
+    static String[] majorColors = {"White", "Red", "Black", "Yellow", "Violet"};
+    static String[] minorColors = {"Blue", "Orange", "Green", "Brown", "Slate"};
+
+    
+    static List<String> generateColorCode() {
+        List<String> colorCodePairs = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                colorCodePairs.add(i * 5 + j + " | " + majorColors[i] + " | " + minorColors[i]);
             }
         }
-        return i * j;
+        return colorCodePairs;
+    }
+    
+    static int printColorMap() {
+        List<String> colorCodePairs = generateColorCodePairs();
+        colorCodePairs.forEach(System.out::println);
+        return colorCodePairs.size();
+    }
+    
+    static void testColorCoding(List<String> expectedColorCodeManaual) {
+        List<String> actualColorCodeManual = generateColorCode();
+        assert(actualColorCodeManual.equals(expectedColorCodeManaual));
+        System.out.println("Test executed (failure expected)!");
     }
 
-    static void testColorCoding() {
-        List<String> expectedColorCodeManaual = new ArrayList<>();
+    static  List<String> generateExpectedManaul(){
+         List<String> expectedColorCodeManaual = new ArrayList<>();
         expectedColorCodeManaual.add("0 | White | Blue");
         expectedColorCodeManaual.add("1 | White | Orange");
         expectedColorCodeManaual.add("2 | White | Green");
@@ -38,18 +53,12 @@ public class Misaligned {
         expectedColorCodeManaual.add("22 | Violet | Green");
         expectedColorCodeManaual.add("23 | Violet | Brown");
         expectedColorCodeManaual.add("24 | Violet | Slate");
-
-        List<String> actualColorCodeManual = generateColorCodePairs();
-
-        assert(actualColorCodeManual.equals(expectedColorCodeManaual));
-        System.out.println("Test executed (failure expected)!");
+        return expectedColorCodeManaual;
     }
     public static void main(String[] args) { 
         int result = printColorMap();
+        testColorCoding(generateExpectedManaul());
         assert(result == 25);
-         assert(result == 26);
-         assert(result == 4);
-        testColorCoding();
         System.out.println("All is well (maybe!)");
     }
 }
