@@ -55,9 +55,12 @@ public class Misaligned {
         expectedColorCodeManaual.add("24 | Violet | Slate");
         return expectedColorCodeManaual;
     }
+
+    
     public static void main(String[] args) { 
         int result = printColorMap();
-        testColorCoding(generateExpectedManaul());
+        List<String> expectedColorCodeManaual=generateExpectedManaul();
+        testColorCoding(expectedColorCodeManaual);
         assert(result == 25);
         System.out.println("All is well (maybe!)");
     }
